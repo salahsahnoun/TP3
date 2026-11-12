@@ -1,0 +1,6 @@
+modele,RMSE_log_moyenne,ecart_type,min,max,duree_s
+Ridge,0.1137,0.0059,0.1041,0.1217,1.1
+Gradient Boosting (sklearn),0.1165,0.0069,0.1083,0.1252,4.3
+TFDF Gradient Boosted,0.1224,0.0067,0.1121,0.1313,13.7
+TFDF Random Forest,0.1292,0.0087,0.1198,0.1435,9.9
+Random Forest (sklearn),0.1322,0.0078,0.1213,0.143,1.5

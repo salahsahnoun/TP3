@@ -1,0 +1,7 @@
+modele,RMSE_train,RMSE_valid,MAE_valid,R2_valid,RMSLE_valid,MAPE_valid,ecart_train_valid,duree_s
+2. TFDF RF (notre pipeline),14792,32817,18499,0.8404,0.1576,11.04,2.22,1.79
+1. TFDF RF (notebook original),14504,33027,18426,0.8384,0.1608,11.24,2.28,6.45
+3. TFDF Gradient Boosted Trees,8363,34736,17407,0.8212,0.1529,10.4,4.15,1.87
+5. Random Forest (scikit-learn),11092,34925,18868,0.8193,0.1593,11.04,3.15,0.32
+4. Ridge (scikit-learn),19702,38026,16257,0.7858,0.1402,9.33,1.93,1.51
+6. Gradient Boosting (scikit-learn),13268,38859,17203,0.7763,0.1487,10.23,2.93,1.1

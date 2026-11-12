@@ -1,0 +1,31 @@
+# Environnement virtuel (2,9 Go, recree par requirements.txt)
+.venv/
+venv/
+env/
+
+# Caches Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+.virtual_documents/
+
+# Donnees intermediaires (regenerees par le notebook a chaque execution)
+PROJECT_1_HOUSE_PRICES/data/processed/
+PROJECT_1_HOUSE_PRICES/data/raw/train_openml_backup.csv
+
+# Modele trop volumineux pour un depot Git (31 Mo).
+# Il est regenere en executant l'etape 5 du notebook.
+PROJECT_1_HOUSE_PRICES/models/random_forest_sklearn.joblib
+
+# Secrets
+.kaggle/
+kaggle.json
+.env
+
+# Systeme
+.DS_Store
+Thumbs.db
+*.swp

@@ -1,0 +1,38 @@
+# Projet 1 : House Prices, Advanced Regression Techniques
+# Python 3.10 requis (TensorFlow Decision Forests 1.9.x ne publie pas de roue
+# pour Python 3.12 et plus).
+#
+# Installation :
+#     python3.10 -m venv .venv
+#     source .venv/bin/activate
+#     pip install -r requirements.txt
+
+# Manipulation de donnees
+pandas==2.2.3
+numpy==1.26.4
+scipy==1.13.1
+
+# Visualisation
+matplotlib==3.9.2
+seaborn==0.13.2
+
+# Machine learning
+scikit-learn==1.5.2
+joblib==1.4.2
+
+# Modele principal du notebook original
+tensorflow==2.16.2
+tensorflow_decision_forests==1.9.2
+tf_keras==2.16.0
+
+# Notebook
+jupyterlab>=4.0
+ipykernel>=6.29
+nbformat>=5.10
+nbconvert>=7.16
+
+# Deploiement
+streamlit>=1.40
+
+# Telechargement des donnees (facultatif, necessite un compte Kaggle)
+kaggle>=1.6
