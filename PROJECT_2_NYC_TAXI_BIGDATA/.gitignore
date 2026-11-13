@@ -1,0 +1,19 @@
+# Environnement virtuel (recree par requirements.txt)
+.venv/
+
+# Caches
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.virtual_documents/
+
+# Donnees brutes : 197 Mo, retelechargeables en deux commandes (voir README).
+# Seule la petite table des zones est versionnee.
+data/raw/*.parquet
+data/raw/echantillon.csv
+data/processed/
+
+# Logs Spark
+spark-warehouse/
+metastore_db/
+derby.log

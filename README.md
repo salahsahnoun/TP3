@@ -11,7 +11,7 @@ commenter, et les améliorer en suivant un pipeline méthodologique imposé.
 | Projet | Sujet | Technologie | État |
 |---|---|---|---|
 | [1. House Prices](PROJECT_1_HOUSE_PRICES/) | Prédire le prix de vente d'une maison | TensorFlow Decision Forests | Terminé |
-| 2. NYC Taxi | Prédire la durée d'un trajet en taxi | Hadoop, Spark, PySpark | À venir |
+| [2. NYC Taxi](PROJECT_2_NYC_TAXI_BIGDATA/) | Prédire la durée d'un trajet en taxi | Hadoop, HDFS, Spark, PySpark | Terminé |
 
 ## Projet 1 : House Prices
 
@@ -32,20 +32,51 @@ comparés. RMSE de 32 817 $, erreur relative moyenne de 11,0 %, R² de 0,840 sur
 
 Documentation détaillée : [`PROJECT_1_HOUSE_PRICES/README.md`](PROJECT_1_HOUSE_PRICES/README.md)
 
+## Projet 2 : NYC Taxi
+
+Traitement distribué sur les données ouvertes de la NYC Taxi and Limousine Commission,
+inspiré du notebook Kaggle
+[`headsortails/nyc-taxi-eda-update-the-fast-the-curious`](https://www.kaggle.com/code/headsortails/nyc-taxi-eda-update-the-fast-the-curious).
+
+**Problématique** : estimer la durée d'une course à partir des seules informations connues
+au moment de la prise en charge. Cette contrainte exclut la distance au compteur, le prix
+et l'heure d'arrivée, qui n'existent pas encore quand il faut répondre.
+
+**Dataset** : janvier 2016, 10,9 millions de courses, 145 Mo en Parquet. Découpage
+chronologique : 8,1 M courses pour apprendre (jours 1 à 24), 2,5 M pour tester (jours 25
+à 31).
+
+**Pipeline** : BIG DATA → HADOOP/SPARK → TRANSFORMATION → MACHINE LEARNING → ÉVALUATION →
+DÉPLOIEMENT, sur un cluster HDFS mono-nœud réel et Spark en mode local.
+
+**Résultat** : Gradient Boosted Trees retenu parmi 4 modèles Spark MLlib. RMSE de 446 s,
+R² de 0,581. Le GBT ne devance l'arbre de décision simple que d'une seconde de RMSE pour
+huit fois plus de temps de calcul, un bon exemple de rendement décroissant.
+
+Documentation détaillée : [`PROJECT_2_NYC_TAXI_BIGDATA/README.md`](PROJECT_2_NYC_TAXI_BIGDATA/README.md)
+
 ## Démarrage rapide
 
 Python 3.10 est requis (TensorFlow Decision Forests ne publie pas de paquet pour les
 versions plus récentes).
 
+Chaque projet a son propre environnement virtuel et son propre `requirements.txt`, pour
+éviter tout conflit entre TensorFlow et Spark.
+
 ```bash
 git clone https://github.com/salahsahnoun/TP3.git
+
+# Projet 1, Python 3.10 requis pour TensorFlow Decision Forests
 cd TP3/PROJECT_1_HOUSE_PRICES
-
-python3.10 -m venv .venv
-source .venv/bin/activate
+python3.10 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-
 jupyter lab notebooks/house_prices_pipeline.ipynb
+
+# Projet 2, Java 11 ou 17 requis pour Spark
+cd ../PROJECT_2_NYC_TAXI_BIGDATA
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+jupyter lab notebooks/nyc_taxi_pipeline.ipynb
 ```
 
 Le notebook est livré déjà exécuté : toutes les sorties et les 17 figures sont
@@ -59,16 +90,19 @@ streamlit run app/app.py
 
 ## Organisation du dépôt
 
+Les deux projets suivent la même organisation :
+
 ```
-PROJECT_1_HOUSE_PRICES/
-├── notebooks/      le pipeline complet, exécuté
-├── tools/          scripts de génération du notebook et des figures
-├── app/            application Streamlit d'estimation
+PROJECT_x/
+├── notebooks/      le pipeline complet, livré exécuté
+├── tools/          scripts de génération du notebook et de la documentation
+├── app/            Streamlit pour le projet 1, FastAPI pour le projet 2
 ├── models/         modèles et transformateurs sauvegardés
 ├── reports/        figures et tableaux de résultats
-├── data/raw/       jeu de données d'entraînement
-└── README.md       documentation détaillée du projet
+├── data/raw/       données d'entrée
+└── README.md       documentation détaillée
 ```
 
-Ne sont pas versionnés : l'environnement virtuel, les données intermédiaires et le modèle
-Random Forest scikit-learn de 31 Mo. Tous sont régénérés par l'exécution du notebook.
+Ne sont pas versionnés : les environnements virtuels, les données intermédiaires, le modèle
+Random Forest scikit-learn de 31 Mo et les 145 Mo de données NYC Taxi. Tous sont régénérés
+ou retéléchargés en une commande, décrite dans le README de chaque projet.

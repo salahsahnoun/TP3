@@ -1,0 +1,5 @@
+modele,RMSE_s,MAE_s,R2,RMSLE,MAPE_pct,entrainement_s
+GBT,446,278,0.5809,0.4567,32.5,999.9
+Decision Tree,447,278,0.5795,0.4576,32.6,131.3
+Random Forest,460,285,0.5548,0.4631,33.3,522.1
+Linear Regression,621,373,0.1885,0.5562,43.5,17.8

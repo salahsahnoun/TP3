@@ -1,0 +1,12 @@
+{
+  "modele": "GBT",
+  "n_entrainement": 8108417,
+  "n_test": 2492864,
+  "distance_globale": 1.69,
+  "rmse_test_s": 446,
+  "mae_test_s": 278,
+  "r2_test": 0.5809,
+  "mape_test_pct": 32.5,
+  "periode": "janvier 2016",
+  "graine": 42
+}
