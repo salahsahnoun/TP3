@@ -95,7 +95,7 @@ Les deux projets suivent la même organisation :
 ```
 PROJECT_x/
 ├── notebooks/      le pipeline complet, livré exécuté
-├── tools/          scripts de génération du notebook et de la documentation
+├── tools/          modules importés à l'exécution (figures, classes du pipeline)
 ├── app/            Streamlit pour le projet 1, FastAPI pour le projet 2
 ├── models/         modèles et transformateurs sauvegardés
 ├── reports/        figures et tableaux de résultats
@@ -104,5 +104,6 @@ PROJECT_x/
 ```
 
 Ne sont pas versionnés : les environnements virtuels, les données intermédiaires, le modèle
-Random Forest scikit-learn de 31 Mo et les 145 Mo de données NYC Taxi. Tous sont régénérés
-ou retéléchargés en une commande, décrite dans le README de chaque projet.
+Random Forest scikit-learn de 31 Mo et les 145 Mo de données NYC Taxi. Tous se
+reconstruisent ou se retéléchargent en une commande, décrite dans le README de chaque
+projet.

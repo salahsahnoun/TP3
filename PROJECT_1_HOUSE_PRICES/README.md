@@ -64,12 +64,8 @@ PROJECT_1_HOUSE_PRICES/
 ├── notebooks/
 │   └── house_prices_pipeline.ipynb      le pipeline complet, 7 étapes
 ├── tools/
-│   ├── pipeline_maisons.py     classes de préparation (importables)
-│   ├── viz.py                  palette et style des figures
-│   ├── nbgen.py                construction des notebooks
-│   ├── build_notebook.py       assemblage du notebook
-│   ├── build_docs.py           génération de ce README
-│   └── sections/               une étape du pipeline par module
+│   ├── pipeline_maisons.py     classes de préparation, importées à l'exécution
+│   └── viz.py                  palette et style des figures
 ├── models/                     modèles et transformateurs sauvegardés
 ├── app/
 │   ├── prediction.py           logique de prédiction, partagée
@@ -81,11 +77,6 @@ PROJECT_1_HOUSE_PRICES/
 ├── requirements.txt
 └── README.md
 ```
-
-**Pourquoi le notebook est généré par des scripts.** Chaque étape est écrite dans un module
-Python de `tools/sections/`, assemblé en un notebook unique par `build_notebook.py`, puis
-exécuté par `nbconvert`. Cela garantit que **toutes les sorties affichées proviennent d'une
-exécution réelle** : à chaque correction, l'intégralité du notebook est réexécutée.
 
 **Pourquoi les classes sont dans un module.** `joblib` sérialise les objets par référence à
 leur module. Une classe définie dans le notebook serait enregistrée sous `__main__` et
@@ -117,7 +108,8 @@ DATA  →  EDA  →  PRÉTRAITEMENT  →  TRANSFORMATION  →  MACHINE LEARNING 
 2. **Aucune métrique sur `test.csv`.** Toutes les métriques viennent des
    292 maisons de validation.
 3. **Aucun résultat inventé.** Le notebook est réexécuté intégralement à chaque
-   modification, et cette documentation est générée depuis les fichiers de résultats.
+   modification, et les chiffres de cette documentation proviennent des fichiers de
+   résultats.
 4. **Comparaison équitable.** Même découpage, même graine (42), même jeu de validation
    pour les six modèles.
 
@@ -224,14 +216,14 @@ jupyter lab notebooks/house_prices_pipeline.ipynb
 Le notebook est livré **déjà exécuté** : toutes les sorties et figures sont enregistrées.
 "Run All" le réexécute à l'identique, la graine étant fixée à 42.
 
-### Régénérer le notebook depuis les sources
+### Réexécuter le notebook entièrement
 
 ```bash
-python tools/build_notebook.py          # assemble les 8 modules de tools/sections/
 jupyter nbconvert --to notebook --execute --inplace \
     notebooks/house_prices_pipeline.ipynb
-python tools/build_docs.py              # met a jour le README
 ```
+
+La graine étant fixée à 42, le résultat est identique à la version livrée.
 
 ### L'application
 

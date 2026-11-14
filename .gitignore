@@ -29,3 +29,9 @@ kaggle.json
 .DS_Store
 Thumbs.db
 *.swp
+
+# Outils de travail locaux. Seuls viz.py et pipeline_maisons.py sont versionnes,
+# car ils sont importes a l'execution par les notebooks et par l'application.
+*/tools/*
+!*/tools/viz.py
+!*/tools/pipeline_maisons.py
